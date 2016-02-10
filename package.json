@@ -28,7 +28,7 @@
     }
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4.0"
   },
   "dependencies": {
     "boom": "~2.9.0",
