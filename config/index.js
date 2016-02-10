@@ -26,7 +26,8 @@ var config = {
     consoleLogLevel: 'debug',
     port: port,
     logDir: './logs',
-    basePath: 'http://localhost:8081'
+    basePath: 'localhost:8081',
+    schemes: ['http']
   },
   ci: {
     mode: 'ci',
@@ -35,7 +36,8 @@ var config = {
     port: port,
     logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'http://ci-cnid-user-service.conde.io'
+    basePath: 'ci-cnid-user-service.conde.io',
+    schemes: ['http']
   },
   staging: {
     mode: 'stag',
@@ -44,7 +46,8 @@ var config = {
     port: port,
     logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'https://stag-cnid-user-service.conde.io'
+    basePath: 'stag-cnid-user-service.conde.io',
+    schemes: ['https']
   },
   production: {
     mode: 'prod',
@@ -53,7 +56,8 @@ var config = {
     port: port,
     logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'https://prod-cnid-user-service.conde.io'
+    basePath: 'prod-cnid-user-service.conde.io',
+    schemes: ['https']
   }
 };
 

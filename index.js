@@ -4,8 +4,8 @@ var Hapi = require('hapi');
 var config = require('./config')();
 var log = require('./logger');
 // var extensions = require('./extensions');
-// var Inert = require('inert');
-// var Vision = require('vision');
+var Inert = require('inert');
+var Vision = require('vision');
 
 var server = new Hapi.Server({
   connections: {
@@ -31,17 +31,17 @@ server.on('tail', extensions.handleTail);
 
 require('./routes')(server);
 
-// server.register([
-  // Inert,
-  // Vision,
-  // require('./plugins/swaggerPlugin')
-// ], function handlePluginRegistrationError(err) {
-  // if (err) {
-    // log.error(JSON.stringify(err));
-    // throw err; // something bad happened loading the plugins
-  // }
+server.register([
+  Inert,
+  Vision,
+  require('./plugins/swaggerPlugin')
+], function handlePluginRegistrationError(err) {
+  if (err) {
+    log.error(JSON.stringify(err));
+    throw err; // something bad happened loading the plugins
+  }
   server.start(function serverStartedCallback() {
     log.warn('running ' + config.mode + ' configuration');
     log.warn('Server running at: ' + server.info.uri);
   });
-// });
+});
