@@ -1,0 +1,57 @@
+{
+  "name": "hapi-bootstrap",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "$NODE_BIN app.js",
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andianderson522/hapi-bootstrap.git"
+  },
+  "license": "MIT",
+  "eslintConfig": {
+    "extends": "./node_modules/@condenast/cn-js-styleguide/.eslintrc",
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "rules": {
+      "strict": [
+        0,
+        "global"
+      ],
+      "global-strict": [
+        0,
+        "always"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "dependencies": {
+    "boom": "~2.9.0",
+    "hapi": "~9.0.1",
+    "hapi-swagger": "~2.1.0",
+    "inert": "~3.1.0",
+    "joi": "~6.9.0",
+    "vision": "~3.0.0",
+    "winston": "~0.9.0",
+    "newrelic": "~1.24.1",
+    "lodash": "^4.0.0"
+  },
+  "devDependencies": {
+    "@condenast/cn-js-styleguide": "~0.0.1",
+    "babel-eslint": "~4.1.0",
+    "chai": "~2.1.2",
+    "chai-as-promised": "^5.1.0",
+    "eslint-plugin-react": "~3.3.0",
+    "gulp": "~3.9.0",
+    "gulp-eslint": "~1.0.0",
+    "gulp-mocha": "~2.0.0",
+    "gulp-todo": "~3.1.1",
+    "mocha": "~2.2.1",
+    "sinon": "~1.15.4"
+  }
+}
