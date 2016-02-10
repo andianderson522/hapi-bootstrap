@@ -1,8 +1,8 @@
 'use strict';
 require('newrelic');
 var Hapi = require('hapi');
-// var config = require('./config')();
-// var log = require('./logger');
+var config = require('./config')();
+var log = require('./logger');
 // var extensions = require('./extensions');
 // var Inert = require('inert');
 // var Vision = require('vision');
