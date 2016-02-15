@@ -31,6 +31,8 @@
     "node": ">=4.0"
   },
   "dependencies": {
+    "catbox": "^7.1.0",
+    "catbox-redis": "^1.0.7",
     "hapi": "^13.0.0",
     "hapi-swagger": "^4.1.0",
     "inert": "^3.2.0",

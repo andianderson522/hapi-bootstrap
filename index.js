@@ -12,7 +12,13 @@ var server = new Hapi.Server({
     routes: {
       cors: true
     }
-  }
+  },
+  cache: [ {
+    engine: require('catbox-redis'),
+    host: config.redisHost,
+    port: config.resisPort,
+    partition: 'cache'
+  }]
 });
 server.connection({ port: config.port });
 
