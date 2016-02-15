@@ -33,6 +33,9 @@
   "dependencies": {
     "catbox": "^7.1.0",
     "catbox-redis": "^1.0.7",
+    "good": "^6.6.0",
+    "good-console": "^5.3.1",
+    "good-file": "^5.1.2",
     "hapi": "^13.0.0",
     "hapi-swagger": "^4.1.0",
     "inert": "^3.2.0",

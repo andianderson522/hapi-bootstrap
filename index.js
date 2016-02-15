@@ -37,7 +37,8 @@ require('./routes')(server);
 server.register([
   Inert,
   Vision,
-  require('./plugins/swaggerPlugin')
+  require('./plugins/swaggerPlugin'),
+  require('./plugins/goodPlugin')
 ], function handlePluginRegistrationError(err) {
   if (err) {
     log.error(JSON.stringify(err));
