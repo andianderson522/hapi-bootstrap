@@ -10,7 +10,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     expect(config.level).to.equal('debug');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
-    expect(config.basePath).to.equal('http://localhost:8081');
+    expect(config.basePath).to.equal('localhost:8081');
     next();
   });
   it('should load ci configurations', function testCiConfiguration(next) {
@@ -19,7 +19,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     expect(config.level).to.equal('debug');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
-    expect(config.basePath).to.equal('http://ci-cnid-user-service.conde.io');
+    expect(config.basePath).to.equal('ci-cnid-user-service.conde.io');
     next();
   });
   it('should load staging configurations', function testStagingConfiguration(next) {
@@ -28,7 +28,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     expect(config.level).to.equal('info');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
-    expect(config.basePath).to.equal('https://stag-cnid-user-service.conde.io');
+    expect(config.basePath).to.equal('stag-cnid-user-service.conde.io');
     next();
   });
   it('should load production configurations', function testProductionConfiguration(next) {
@@ -37,7 +37,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     expect(config.level).to.equal('info');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
-    expect(config.basePath).to.equal('https://prod-cnid-user-service.conde.io');
+    expect(config.basePath).to.equal('prod-cnid-user-service.conde.io');
     next();
   });
 });
