@@ -10,7 +10,10 @@ module.exports = function attachPingRoutes(server) {
     config: {
       description: 'Returns if app is running or not.',
       notes: 'This endpoint is used for monitoring the app.',
-      tags: ['api', 'monitoring']
+      tags: ['api', 'monitoring'],
+      cache: {
+        expiresIn: 300 * 1000
+      }
     }
   });
   server.route({
@@ -20,7 +23,10 @@ module.exports = function attachPingRoutes(server) {
     config: {
       description: 'A "Im Alive" endpoint for dev-ops',
       notes: 'this endpoint is used for telling if the app is still running',
-      tags: ['api', 'monitoring']
+      tags: ['api', 'monitoring'],
+      cache: {
+        expiresIn: 300 * 1000
+      }
     }
   });
 };

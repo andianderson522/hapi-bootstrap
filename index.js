@@ -7,7 +7,7 @@ var extensions = require('./extensions');
 var Inert = require('inert');
 var Vision = require('vision');
 
-var server = new Hapi.Server({
+const server = new Hapi.Server({
   connections: {
     routes: {
       cors: true
@@ -17,14 +17,13 @@ var server = new Hapi.Server({
     engine: require('catbox-redis'),
     host: config.redisHost,
     port: config.resisPort,
-    partition: 'cache'
+    partition: config.cachePartion,
+    shared: true
   }]
 });
 server.connection({ port: config.port });
 
-server.ext('onPreResponse', function ext(request, reply) {
-  return reply.continue();
-});
+// server.ext('onPreResponse', extensions.handlePreResponse);
 
 server.on('request-internal', extensions.handleOnRequest);
 
