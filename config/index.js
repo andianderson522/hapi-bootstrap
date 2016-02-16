@@ -6,7 +6,7 @@ var port = process.env.NODE_PORT || 8081;
 
 function logDirExistsSync() {
   // FIXME needs to be changed to actual
-  var expectedLogDir = '/cn/runtime/cnid-user-service/nodejs/logs';
+  var expectedLogDir = '/cn/runtime/YOURPROJECTNAMEHERE/nodejs/logs';
   try {
     if (fs.statSync(expectedLogDir).isDirectory()) {
       return expectedLogDir;
