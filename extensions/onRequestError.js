@@ -1,9 +1,9 @@
 'use strict';
 var log = require('../logger');
-var requestSummerizer = require('./requestSummerizer');
+var requestSummarizer = require('./requestSummarizer');
 
 function logError(request, error) {
-  let summary = requestSummerizer.summarize(request);
+  let summary = requestSummarizer.summarize(request);
   summary.error = {
     message: error.message,
     stack: error.stack

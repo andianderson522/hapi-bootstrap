@@ -1,11 +1,8 @@
 'use strict';
 var shared = require('../shared');
 var serv = shared.server;
-var log = require('../logger');
 
 function doPing(next) {
-  console.info('Getting data...'); // log so we can tell when a request is made
-  log.error('HERE');
   return next(null, {message: 'pong'});
 }
 

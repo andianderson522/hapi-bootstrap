@@ -1,7 +1,7 @@
 'use strict';
 var newrelic = require('newrelic');
 var log = require('../logger');
-var requestSummerizer = require('./requestSummerizer');
+var requestSummarizer = require('./requestSummarizer');
 
 function doNewRelic(request, xClient) {
   log.debug('sending data to new relic');
@@ -23,7 +23,7 @@ function shouldLog(request) {
 function logRequest(request, event, tags) {
   // Mute request to /ping
   if (shouldLog(request)) {
-    let summary = requestSummerizer.summarize(request);
+    let summary = requestSummarizer.summarize(request);
     summary.type = 'request';
     if (tags.payload) {
       summary.payload = event.data;

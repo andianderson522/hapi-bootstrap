@@ -1,6 +1,6 @@
 'use strict';
 var log = require('../logger');
-var requestSummerizer = require('./requestSummerizer');
+var requestSummarizer = require('./requestSummarizer');
 
 function shouldLog(request) {
   if (request.route.path.indexOf('ping') > -1) {
@@ -15,7 +15,7 @@ function shouldLog(request) {
 function logResponse(request) {
   // Mute request to /ping
   if (shouldLog(request)) {
-    let summary = requestSummerizer.summarize(request);
+    let summary = requestSummarizer.summarize(request);
     summary.statusCode = request.raw.res.statusCode;
     summary.type = 'response';
     log.info(summary);
