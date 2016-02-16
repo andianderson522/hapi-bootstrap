@@ -6,15 +6,11 @@ function doPing(next) {
   return next(null, {message: 'pong'});
 }
 
-// var MONTH = 2629746000;
-var SECOND = 1000;
-var MINUTE = 60 * SECOND;
-
 serv.method('doPing', doPing, {
   cache: {
-    expiresIn: 10 * MINUTE,
-    staleIn: 5 * MINUTE,
-    staleTimeout: 4 * MINUTE,
+    expiresIn: 10 * shared.MINUTE,
+    staleIn: 5 * shared.MINUTE,
+    staleTimeout: 4 * shared.MINUTE,
     generateTimeout: 100,
     segment: 'ping'
   }
