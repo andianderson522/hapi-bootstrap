@@ -1,6 +1,5 @@
 'use strict';
 require('newrelic');
-// var Hapi = require('hapi');
 var config = require('./config')();
 var log = require('./logger');
 var extensions = require('./extensions');
@@ -10,22 +9,6 @@ var serv = shared.server;
 var Inert = require('inert');
 var Vision = require('vision');
 
-/*
-const server = new Hapi.Server({
-  connections: {
-    routes: {
-      cors: true
-    }
-  },
-  cache: [ {
-    engine: require('catbox-redis'),
-    host: config.redisHost,
-    port: config.resisPort,
-    partition: config.cachePartion,
-    shared: true
-  }]
-});
-*/
 serv.connection({ port: config.port });
 
 // server.ext('onPreResponse', extensions.handlePreResponse);
