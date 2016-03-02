@@ -18,6 +18,12 @@ function score(context) {
   if (context.MDPresent) {
     total += 2;
   }
+  if (context.numCharsInMD) {
+    total += 1;
+  }
+  if (context.KWinMD) {
+    total += 2;
+  }
   return total;
 }
 
@@ -64,8 +70,13 @@ function checkMetaDesc(metaDesc, focusKW, context) {
   return new Promise(function r(resolve) {
     if (metaDesc.length > 0) {
       context.MDPresent = true;
+      if (metaDesc.length <= 80) {
+        context.numCharsInMD = true;
+      }
+      if (metaDesc.toLowerCase().indexOf(focusKW.toLowerCase()) >= 0) {
+        context.KWinMD = true;
+      }
     }
-
     return resolve(context);
   });
 }
@@ -237,7 +248,7 @@ module.exports = function attachPingRoutes(server) {
         KWFirstPara: false,
         KWinURL: false,
         MDPresent: false,
-        numWordsInMD: false,
+        numCharsInMD: false,
         KWinMD: false,
         numWordsInStory: false,
         presenceOfImage: false,
@@ -249,11 +260,11 @@ module.exports = function attachPingRoutes(server) {
         gnHeadlineWordCnt: false,
         gnMaxWords: false
       };
-      let headline = payload.headline;
-      let focusKW = payload.focusKW;
+      let headline = payload.hed;
+      let focusKW = payload.seoKeywords;
       let body = payload.body;
       let url = payload.url;
-      let metaDesc = payload.metaDesc;
+      let metaDesc = payload.seoDescription;
       /*
       Red:  Below 60%  Orange: 60%   Green: 90%
 1.  Focus keyword/s.  (must have, tool should not even work without this inputted)
@@ -262,8 +273,8 @@ Keyword early in the headline 5%
 Keyword in the first paragraph 20%
 Keyword in the URL 5%
 Meta description 2%
-7.  Number of words of meta description 160 max  1%
-8.  Focus keyword in the meta description 2%
+Number of chars of meta description 80 max  1%
+Focus keyword in the meta description 2%
 9.  Number of words in the story (300 words minimum) 10%
 10.  Presence of image 10%
 11.  Keywords in the caption 5%
@@ -288,7 +299,7 @@ Google News:  Pass or fail for each
           KWFirstPara: context.KWFirstPara,
           KWinURL: context.KWinURL,
           MDPresent: context.MDPresent,
-          numWordsInMD: context.numWordsInMD,
+          numCharsInMD: context.numCharsInMD,
           KWinMD: context.KWinMD,
           numWordsInStory: context.numWordsInStory,
           presenceOfImage: context.presenceOfImage,
