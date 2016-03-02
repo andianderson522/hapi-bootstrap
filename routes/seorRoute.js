@@ -24,10 +24,19 @@ function score(context) {
   if (context.KWinMD) {
     total += 2;
   }
+  if (context.numWordsInStory) {
+    total += 10;
+  }
+  if (context.presenceOfImage) {
+    total += 10;
+  }
+  if (context.internalLinksNum) {
+    total += 5;
+  }
   return total;
 }
 
-function headLineCheck(headline, context, focusKW) {
+function headLineCheck(headline, context, focusKW, seoTitle) {
   return new Promise(function r(resolve) {
     let ind = headline.toLowerCase().indexOf(focusKW.toLowerCase());
     let len = headline.length;
@@ -41,16 +50,58 @@ function headLineCheck(headline, context, focusKW) {
     if (sp.length > 4 && sp.length < 12) {
       context.gnHeadlineWordCnt = true;
     }
+    if (headline === seoTitle) {
+      context.gnTitlesMatch = true;
+    }
     return resolve(context);
   });
 }
 
-function checkFirstPara(body, focusKW, context) {
+function checkBody(body, focusKW, context) {
   return new Promise(function r(resolve) {
     let ind = body.indexOf('|||');
     let firstPara = body.substring(0, ind - 1);
     if (firstPara.toLowerCase().indexOf(focusKW.toLowerCase()) >= 0) {
       context.KWFirstPara = true;
+    }
+    let totWordCnt = body.split(' ').length;
+    if (totWordCnt > 300) {
+      context.numWordsInStory = true;
+    }
+    if (totWordCnt > 200) {
+      context.gnMinWords = true;
+    }
+    if (totWordCnt < 3000) {
+      context.gnMaxWords = true;
+    }
+    if (body.indexOf('[#image:') >= 0) {
+      context.presenceOfImage = true;
+    }
+    let firstEmbed = body.indexOf('[#');
+    let linkCount = 0;
+    let currentIndex = firstEmbed;
+    if (firstEmbed < 0) {
+      firstEmbed = body.length;
+    } else {
+      while (currentIndex < body.length && currentIndex > -1) {
+        let s1 = body.substring(currentIndex);
+        currentIndex = body.indexOf('[#', currentIndex + 2);
+        if (s1.startsWith('[#image')) {
+          continue;
+        } else {
+          linkCount++;
+        }
+        if (linkCount > 3) {
+          break;
+        }
+      }
+      if (linkCount >= 3) {
+        context.internalLinksNum = true;
+      }
+    }
+    let bodyToEmbed = body.substring(0, firstEmbed - 1);
+    if (bodyToEmbed.split(' ').length > 200) {
+      context.gnMinWordsB4Embed = true;
     }
     return resolve(context);
   });
@@ -258,13 +309,15 @@ module.exports = function attachPingRoutes(server) {
         gnMinWords: false,
         gnMinWordsB4Embed: false,
         gnHeadlineWordCnt: false,
-        gnMaxWords: false
+        gnMaxWords: false,
+        gnTitlesMatch: false
       };
       let headline = payload.hed;
       let focusKW = payload.seoKeywords;
       let body = payload.body;
       let url = payload.url;
       let metaDesc = payload.seoDescription;
+      let seoTitle = payload.seoTitle;
       /*
       Red:  Below 60%  Orange: 60%   Green: 90%
 1.  Focus keyword/s.  (must have, tool should not even work without this inputted)
@@ -275,18 +328,20 @@ Keyword in the URL 5%
 Meta description 2%
 Number of chars of meta description 80 max  1%
 Focus keyword in the meta description 2%
-9.  Number of words in the story (300 words minimum) 10%
-10.  Presence of image 10%
+Number of words in the story (300 words minimum) 10%
+Presence of image 10%
 11.  Keywords in the caption 5%
-12.  3 internal links 5%
+3 internal links 5%
 
 Google News:  Pass or fail for each
-13.  200 words minimum  
-14.  200 Words before first embed
+200 words minimum  
+200 Words before first embed
 4 -12 Words in the Headline
-16.  3000 words maximum
+3000 words maximum
+Headline is identical to the Page Title
+[#image: https://www.youtube.com/watch?v=kpG-fUv9vZs]|||
       */
-      return Promise.all([context, headLineCheck(headline, context, focusKW), checkFirstPara(body, focusKW, context), checkURL(url, focusKW, context), checkMetaDesc(metaDesc, focusKW, context)])
+      return Promise.all([context, headLineCheck(headline, context, focusKW, seoTitle), checkBody(body, focusKW, context), checkURL(url, focusKW, context), checkMetaDesc(metaDesc, focusKW, context)])
       .then(function a(result) {
         return result[0];
       })
@@ -305,11 +360,12 @@ Google News:  Pass or fail for each
           presenceOfImage: context.presenceOfImage,
           KWinCaption: context.KWinCaption,
           internalLinksNum: context.internalLinksNum,
-          gnPass: context.gnMinWords && context.gnMinWordsB4Embed && context.gnHeadlineWordCnt && context.gnMaxWords,
+          gnPass: context.gnMinWords && context.gnMinWordsB4Embed && context.gnHeadlineWordCnt && context.gnMaxWords && context.gnTitlesMatch,
           gnMinWords: context.gnMinWords,
           gnMinWordsB4Embed: context.gnMinWordsB4Embed,
           gnHeadlineWordCnt: context.gnHeadlineWordCnt,
           gnMaxWords: context.gnMaxWords,
+          gnTitlesMatch: context.gnTitlesMatch,
           totalScore: score(context)
         });
         return Promise.resolve;
