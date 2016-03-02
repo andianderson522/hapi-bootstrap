@@ -47,27 +47,18 @@ module.exports = function attachPingRoutes(server) {
         }, {
           contentID: 6,
           type: 'ARTICLE',
-          headline: 'an article',
+          headline: 'How to Beat Spirit at its Own Game and Minimize Airline Fees',
           seorScore: 65,
           googleNews: true,
           googleRank: 6,
           focusKeyword: 'spirit airlines baggage fees',
           sampleDate: '02/29/2016'
         }, {
-          contentID: 5,
-          type: 'ARTICLE',
-          headline: 'How to Beat Spirit at its Own Game and Minimize Airline Fees',
-          seorScore: 52,
-          googleNews: true,
-          googleRank: 13,
-          focusKeyword: 'car',
-          sampleDate: '02/29/2016'
-        }, {
           contentID: 7,
           type: 'HOTEL',
           headline: 'The Royal Hawaiian (Luxury Collection)',
           seorScore: 49,
-          googleNews: true,
+          googleNews: false,
           googleRank: 14,
           focusKeyword: 'royal hawaiian hotel',
           sampleDate: '02/29/2016'
@@ -76,7 +67,7 @@ module.exports = function attachPingRoutes(server) {
           type: 'ARTICLE',
           headline: 'Justin Rose: How to Control Your Wedges',
           seorScore: 35,
-          googleNews: true,
+          googleNews: false,
           googleRank: 22,
           focusKeyword: 'justin rose',
           sampleDate: '02/29/2016'
@@ -88,6 +79,15 @@ module.exports = function attachPingRoutes(server) {
           googleNews: false,
           googleRank: 27,
           focusKeyword: 'car',
+          sampleDate: '02/29/2016'
+        }, {
+          contentID: 5,
+          type: 'ARTICLE',
+          headline: 'How to Buy, Store, and Cook Butternut Squash, in Season in Autumn',
+          seorScore: 22,
+          googleNews: false,
+          googleRank: 31,
+          focusKeyword: 'butternut squash recipes',
           sampleDate: '02/29/2016'
         }, {
           contentID: 11,
