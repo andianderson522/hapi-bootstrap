@@ -291,8 +291,7 @@ module.exports = function attachPingRoutes(server) {
     path: '/seor/score/{id}',
     handler: function hand(req, reply) {
       let payload = req.payload;
-      console.log(payload);
-      let contentID = req.params.id;
+      // let contentID = req.params.id;
       var context = {
         KWinHL: false,
         KWinHLearly: false,
@@ -346,8 +345,6 @@ Headline is identical to the Page Title
         return result[0];
       })
       .then(function rep() {
-        console.log('context:');
-        console.dir(context);
         reply({
           KWinHL: context.KWinHL,
           KWinHLearly: context.KWinHLearly,
@@ -376,7 +373,7 @@ Headline is identical to the Page Title
       notes: 'This endpoint is used for monitoring the app.',
       tags: ['api', 'monitoring'],
       cache: {
-        expiresIn: 300 * 1000
+        expiresIn: 5 * 1000
       }
     }
   });
