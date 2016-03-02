@@ -15,6 +15,9 @@ function score(context) {
   if (context.KWinURL) {
     total += 5;
   }
+  if (context.MDPresent) {
+    total += 2;
+  }
   return total;
 }
 
@@ -53,6 +56,16 @@ function checkURL(url, focusKW, context) {
     if (url.toLowerCase().indexOf(conv.toLowerCase()) >= 0) {
       context.KWinURL = true;
     }
+    return resolve(context);
+  });
+}
+
+function checkMetaDesc(metaDesc, focusKW, context) {
+  return new Promise(function r(resolve) {
+    if (metaDesc.length > 0) {
+      context.MDPresent = true;
+    }
+
     return resolve(context);
   });
 }
@@ -240,6 +253,7 @@ module.exports = function attachPingRoutes(server) {
       let focusKW = payload.focusKW;
       let body = payload.body;
       let url = payload.url;
+      let metaDesc = payload.metaDesc;
       /*
       Red:  Below 60%  Orange: 60%   Green: 90%
 1.  Focus keyword/s.  (must have, tool should not even work without this inputted)
@@ -247,8 +261,8 @@ Keyword in the headline   35%
 Keyword early in the headline 5%
 Keyword in the first paragraph 20%
 Keyword in the URL 5%
-6.  Meta description 2%
-7.  Number of words of meta description   1%
+Meta description 2%
+7.  Number of words of meta description 160 max  1%
 8.  Focus keyword in the meta description 2%
 9.  Number of words in the story (300 words minimum) 10%
 10.  Presence of image 10%
@@ -261,7 +275,7 @@ Google News:  Pass or fail for each
 4 -12 Words in the Headline
 16.  3000 words maximum
       */
-      return Promise.all([context, headLineCheck(headline, context, focusKW), checkFirstPara(body, focusKW, context), checkURL(url, focusKW, context)])
+      return Promise.all([context, headLineCheck(headline, context, focusKW), checkFirstPara(body, focusKW, context), checkURL(url, focusKW, context), checkMetaDesc(metaDesc, focusKW, context)])
       .then(function a(result) {
         return result[0];
       })
