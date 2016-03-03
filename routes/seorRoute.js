@@ -346,6 +346,7 @@ Headline is identical to the Page Title
       })
       .then(function rep() {
         reply({
+          totalScore: score(context),
           KWinHL: context.KWinHL,
           KWinHLearly: context.KWinHLearly,
           KWFirstPara: context.KWFirstPara,
@@ -362,8 +363,7 @@ Headline is identical to the Page Title
           gnMinWordsB4Embed: context.gnMinWordsB4Embed,
           gnHeadlineWordCnt: context.gnHeadlineWordCnt,
           gnMaxWords: context.gnMaxWords,
-          gnTitlesMatch: context.gnTitlesMatch,
-          totalScore: score(context)
+          gnTitlesMatch: context.gnTitlesMatch
         });
         return Promise.resolve;
       });
