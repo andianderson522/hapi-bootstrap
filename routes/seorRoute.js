@@ -347,6 +347,7 @@ Headline is identical to the Page Title
       .then(function rep() {
         reply({
           totalScore: score(context),
+          googleRank: 43,
           KWinHL: context.KWinHL,
           KWinHLearly: context.KWinHLearly,
           KWFirstPara: context.KWFirstPara,
