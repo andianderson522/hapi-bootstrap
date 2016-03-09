@@ -1,5 +1,5 @@
 {
-  "name": "hapi-bootstrap",
+  "name": "@condenast/hapi-bootstrap",
   "version": "0.0.1",
   "scripts": {
     "start": "$NODE_BIN index.js",
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:andianderson522/hapi-bootstrap.git"
+    "url": "git@github.com:CondeNast/hapi-bootstrap.git"
   },
   "license": "MIT",
   "eslintConfig": {
