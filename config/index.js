@@ -30,7 +30,7 @@ var config = {
     schemes: ['http'],
     redisHost: 'ci-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'localYOURSERVICENAMECache'
+    cachePartition: 'localYOURSERVICENAMECache'
   },
   ci: {
     mode: 'ci',
@@ -43,7 +43,7 @@ var config = {
     schemes: ['http'],
     redisHost: 'ci-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'ciYOURSERVICENAMECache'
+    cachePartition: 'ciYOURSERVICENAMECache'
   },
   staging: {
     mode: 'stag',
@@ -56,7 +56,7 @@ var config = {
     schemes: ['https'],
     redisHost: 'stag-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'stagYOURSERVICENAMECache'
+    cachePartition: 'stagYOURSERVICENAMECache'
   },
   production: {
     mode: 'prod',
@@ -69,7 +69,7 @@ var config = {
     schemes: ['https'],
     redisHost: 'prod-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'prodYOURSERVICENAMECache'
+    cachePartition: 'prodYOURSERVICENAMECache'
   }
 };
 
