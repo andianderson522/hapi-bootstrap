@@ -3,11 +3,11 @@ var chai = require('chai');
 /*eslint-disable*/
 var should = chai.should();
 /*eslint-enable*/
-var controllers = require('../../../controllers');
+var services = require('../../../services');
 
-describe('controllers test', function desc() {
+describe('services test', function desc() {
   it('exists', function it(done) {
-    controllers.should.exist;
+    services.should.exist;
     done();
   });
 });
