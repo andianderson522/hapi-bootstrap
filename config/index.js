@@ -34,7 +34,7 @@ var config = {
   },
   ci: {
     mode: 'ci',
-    level: 'debug',
+    level: 'fatal',
     consoleLogLevel: 'debug',
     port: port,
     logDir: logDirExistsSync(),
