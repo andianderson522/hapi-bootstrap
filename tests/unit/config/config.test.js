@@ -7,7 +7,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
   it('should load local configurations', function testLocalConfiguration(next) {
     let config = require('../../../config')('local');
     expect(config.mode).to.equal('local');
-    expect(config.level).to.equal('debug');
+    expect(config.level).to.equal('fatal');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
     expect(config.basePath).to.equal('localhost:8081');
@@ -16,7 +16,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
   it('should load ci configurations', function testCiConfiguration(next) {
     let config = require('../../../config')('ci');
     expect(config.mode).to.equal('ci');
-    expect(config.level).to.equal('debug');
+    expect(config.level).to.equal('info');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
     expect(config.basePath).to.equal('ci-cnid-user-service.conde.io');

@@ -22,7 +22,7 @@ function logDirExistsSync() {
 var config = {
   local: {
     mode: 'local',
-    level: 'debug',
+    level: 'fatal',
     consoleLogLevel: 'debug',
     port: port,
     logDir: './logs',
@@ -34,7 +34,7 @@ var config = {
   },
   ci: {
     mode: 'ci',
-    level: 'fatal',
+    level: 'info',
     consoleLogLevel: 'debug',
     port: port,
     logDir: logDirExistsSync(),
