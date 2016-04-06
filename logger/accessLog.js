@@ -5,7 +5,7 @@ var config = require('../config')();
 var logger = new winston.Logger({
   transports: [
     new winston.transports.File({
-      level: 'info',
+      level: config.level,
       filename: config.logDir + '/app.log',
       handleExceptions: true,
       json: true,
