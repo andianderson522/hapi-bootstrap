@@ -31,18 +31,20 @@
     "node": ">=4.0"
   },
   "dependencies": {
-    "catbox": "^7.1.0",
+    "boom": "^2.5.x",
+    "catbox": "6.x.x",
     "catbox-redis": "^1.0.7",
     "good": "^6.6.0",
     "good-console": "^5.3.1",
     "good-file": "^5.1.2",
-    "hapi": "^13.0.0",
+    "hapi": "~10.0.0",
     "hapi-swagger": "^4.1.0",
-    "inert": "^3.2.0",
+    "inert": "3.x.x",
+    "joi": "6.x.x",
     "lodash": "^4.0.0",
     "minimist": "~1.1.2",
     "newrelic": "~1.24.1",
-    "vision": "^4.0.1",
+    "vision": "2.x.x",
     "winston": "^2.1.1"
   },
   "devDependencies": {

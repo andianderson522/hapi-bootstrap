@@ -25,7 +25,7 @@ gulp.task('test', ['todo', 'lint'], function performTests() {
 
 gulp.task('integrationTest', function performIntegrationTests() {
   return gulp.src(['tests/integration/**/*.js'])
-    .pipe(mocha({'reporter': 'spec', 'timeout': 100}));
+    .pipe(mocha({'reporter': 'spec', 'timeout': 1000}));
 });
 
 gulp.task('todo', function performTODOs() {
