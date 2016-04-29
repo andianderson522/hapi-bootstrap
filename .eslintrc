@@ -2,7 +2,8 @@
   "extends": "./node_modules/@condenast/cn-js-styleguide/.eslintrc",
   "env": {
     "node": true,
-    "mocha": true
+    "mocha": true,
+    "es6": true
   },
   "rules": {
     "strict": [0, "global"],
