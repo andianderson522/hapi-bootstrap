@@ -6,7 +6,7 @@ var log = require('./logger');
 var superagent = require('superagent');
 var assertions = require('./helpers/assertions');
 
-describe('health Routes work', function describePingRoutesSuite() {
+describe('health Routes work', function describeHealthRoutesSuite() {
   const basePath = config.baseURL;
   const headers = {
     'X-Client': 'integration'
