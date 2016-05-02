@@ -21,7 +21,7 @@ module.exports = {
       engine: require('catbox-redis'),
       host: config.redisHost,
       port: config.redisPort,
-      partition: config.cachePartion,
+      partition: config.cachePartition,
       shared: true
     }]
   }),

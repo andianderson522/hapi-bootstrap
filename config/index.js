@@ -22,28 +22,28 @@ function logDirExistsSync() {
 var config = {
   local: {
     mode: 'local',
-    level: 'debug',
+    level: 'fatal',
     consoleLogLevel: 'debug',
     port: port,
     logDir: './logs',
     basePath: 'localhost:8081',
     schemes: ['http'],
-    redisHost: '192.168.99.100',
+    redisHost: 'ci-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'localCache'
+    cachePartition: 'localYOURSERVICENAMECache'
   },
   ci: {
     mode: 'ci',
-    level: 'debug',
+    level: 'info',
     consoleLogLevel: 'debug',
     port: port,
     logDir: logDirExistsSync(),
     // FIXME change to actual
     basePath: 'ci-cnid-user-service.conde.io',
     schemes: ['http'],
-    redisHost: '192.168.99.100',
+    redisHost: 'ci-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'ciCache'
+    cachePartition: 'ciYOURSERVICENAMECache'
   },
   staging: {
     mode: 'stag',
@@ -54,9 +54,9 @@ var config = {
     // FIXME change to actual
     basePath: 'stag-cnid-user-service.conde.io',
     schemes: ['https'],
-    redisHost: '192.168.99.100',
+    redisHost: 'stag-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'stagCache'
+    cachePartition: 'stagYOURSERVICENAMECache'
   },
   production: {
     mode: 'prod',
@@ -67,9 +67,9 @@ var config = {
     // FIXME change to actual
     basePath: 'prod-cnid-user-service.conde.io',
     schemes: ['https'],
-    redisHost: '192.168.99.100',
+    redisHost: 'prod-redis-user-platform.conde.io',
     redisPort: 6379,
-    cachePartion: 'prodCache'
+    cachePartition: 'prodYOURSERVICENAMECache'
   }
 };
 
