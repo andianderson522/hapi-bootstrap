@@ -8,6 +8,8 @@
   "rules": {
     "strict": [0, "global"],
     "global-strict": [0, "always"],
-    "indent": [1, 2]
+    "indent": [1, 2],
+    "consistent-return": 0,
+    "react/jsx-quotes": 0
   }
 }

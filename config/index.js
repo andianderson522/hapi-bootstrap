@@ -28,9 +28,11 @@ var config = {
     logDir: './logs',
     basePath: 'localhost:8081',
     schemes: ['http'],
-    redisHost: 'ci-redis-user-platform.conde.io',
-    redisPort: 6379,
-    cachePartition: 'localYOURSERVICENAMECache'
+    redis: {
+      host: 'ci-redis-user-platform.conde.io',
+      port: 6379,
+      cachePartition: 'localYOURSERVICENAMECache'
+    }
   },
   ci: {
     mode: 'ci',
@@ -41,9 +43,11 @@ var config = {
     // FIXME change to actual
     basePath: 'ci-cnid-user-service.conde.io',
     schemes: ['http'],
-    redisHost: 'ci-redis-user-platform.conde.io',
-    redisPort: 6379,
-    cachePartition: 'ciYOURSERVICENAMECache'
+    redis: {
+      host: 'ci-redis-user-platform.conde.io',
+      port: 6379,
+      cachePartition: 'ciYOURSERVICENAMECache'
+    }
   },
   staging: {
     mode: 'stag',
@@ -54,9 +58,11 @@ var config = {
     // FIXME change to actual
     basePath: 'stag-cnid-user-service.conde.io',
     schemes: ['https'],
-    redisHost: 'stag-redis-user-platform.conde.io',
-    redisPort: 6379,
-    cachePartition: 'stagYOURSERVICENAMECache'
+    redis: {
+      host: 'stag-redis-user-platform.conde.io',
+      port: 6379,
+      cachePartition: 'stagYOURSERVICENAMECache'
+    }
   },
   production: {
     mode: 'prod',
@@ -67,9 +73,11 @@ var config = {
     // FIXME change to actual
     basePath: 'prod-cnid-user-service.conde.io',
     schemes: ['https'],
-    redisHost: 'prod-redis-user-platform.conde.io',
-    redisPort: 6379,
-    cachePartition: 'prodYOURSERVICENAMECache'
+    redis: {
+      host: 'prod-redis-user-platform.conde.io',
+      port: 6379,
+      cachePartition: 'prodYOURSERVICENAMECache'
+    }
   }
 };
 
