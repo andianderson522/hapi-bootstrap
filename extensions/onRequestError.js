@@ -1,7 +1,7 @@
 'use strict';
 var log = require('../logger');
-var newrelic = require('newrelic');
 var requestSummarizer = require('./requestSummarizer');
+var newrelic = require('newrelic');
 
 function logError(request, error) {
   let summary = requestSummarizer.summarize(request);
@@ -20,7 +20,7 @@ function putKeyValuesInContext(context, object) {
         context.key = object[key];
       });
     }
-    return resolve;
+    return resolve();
   });
 }
 
@@ -30,7 +30,7 @@ function reportToNewRelic(request, error) {
   return Promise.all([context, putKeyValuesInContext(context, request.headers), putKeyValuesInContext(context, request.params)], putKeyValuesInContext(context, request.query), putKeyValuesInContext(context, request.payload))
   .then(function sendToNewRelic(result) {
     newrelic.noticeError(error, result[0]);
-    return Promise.resolve;
+    return Promise.resolve();
   });
 }
 

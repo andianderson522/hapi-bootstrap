@@ -15,7 +15,7 @@ serv.connection({ port: config.port });
 
 serv.on('request-internal', extensions.handleOnRequest);
 
-serv.on('request-err', extensions.handleOnRequestError);
+serv.on('request-error', extensions.handleOnRequestError);
 
 serv.on('tail', extensions.handleTail);
 
