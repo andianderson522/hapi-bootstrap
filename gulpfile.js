@@ -23,6 +23,7 @@ gulp.task('test', ['todo', 'lint'], function performTests() {
     .pipe(mocha({'reporter': 'spec', 'timeout': 100}));
 });
 
+// this is for codeship, they have an issue and hang if the process does not implicitly call process exit
 gulp.task('test2', ['lint'], function performTests() {
   return gulp.src(['tests/unit/**/*.js'])
     .pipe(mocha({'reporter': 'spec', 'timeout': 200}))
