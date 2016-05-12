@@ -23,6 +23,17 @@ gulp.task('test', ['todo', 'lint'], function performTests() {
     .pipe(mocha({'reporter': 'spec', 'timeout': 100}));
 });
 
+gulp.task('test2', ['lint'], function performTests() {
+  return gulp.src(['tests/unit/**/*.js'])
+    .pipe(mocha({'reporter': 'spec', 'timeout': 200}))
+    .once('error', function e() {
+      process.exit(1);
+    })
+    .once('end', function s() {
+      process.exit();
+    });
+});
+
 gulp.task('integrationTest', function performIntegrationTests() {
   return gulp.src(['tests/integration/**/*.js'])
     .pipe(mocha({'reporter': 'spec', 'timeout': 1000}));
