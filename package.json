@@ -2,7 +2,7 @@
   "name": "@condenast/hapi-bootstrap",
   "version": "0.0.1",
   "scripts": {
-    "start": "$NODE_BIN index.js",
+    "start": "$NODE_BIN cluster.js",
     "test": "gulp"
   },
   "repository": {
