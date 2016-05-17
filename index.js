@@ -25,7 +25,6 @@ serv.register([
   Inert,
   Vision,
   require('./plugins/swaggerPlugin'),
-  require('./plugins/goodPlugin'),
   require('./plugins/hapiAndHealthyPlugin')
 ], function handlePluginRegistrationError(err) {
   if (err) {

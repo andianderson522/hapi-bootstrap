@@ -36,7 +36,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
   it('should load staging configurations', function testStagingConfiguration(next) {
     let config = require('../../../config')('staging');
     expect(config.mode).to.equal('stag');
-    expect(config.level).to.equal('info');
+    expect(config.level).to.equal('warn');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
     expect(config.basePath).to.equal('stag-cnid-user-service.conde.io');
@@ -50,7 +50,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
   it('should load production configurations', function testProductionConfiguration(next) {
     let config = require('../../../config')('production');
     expect(config.mode).to.equal('prod');
-    expect(config.level).to.equal('info');
+    expect(config.level).to.equal('error');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
     expect(config.basePath).to.equal('prod-cnid-user-service.conde.io');

@@ -51,7 +51,7 @@ var config = {
   },
   staging: {
     mode: 'stag',
-    level: 'info',
+    level: 'warn',
     consoleLogLevel: 'error',
     port: port,
     logDir: logDirExistsSync(),
@@ -66,7 +66,7 @@ var config = {
   },
   production: {
     mode: 'prod',
-    level: 'info',
+    level: 'error',
     consoleLogLevel: 'error',
     port: port,
     logDir: logDirExistsSync(),
