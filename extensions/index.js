@@ -1,8 +1,8 @@
 'use strict';
-var onRequest = require('./onRequest');
-var onRequestError = require('./onRequestError');
-var onTail = require('./onTail');
-var preResponseExtension = require('./preResponseExtension');
+const onRequest = require('./onRequest');
+const onRequestError = require('./onRequestError');
+const onTail = require('./onTail');
+const preResponseExtension = require('./preResponseExtension');
 
 exports.handleOnRequest = onRequest.handleOnRequest;
 

@@ -1,6 +1,6 @@
 'use strict';
-var shared = require('../shared');
-var serv = shared.server;
+const shared = require('../shared');
+const serv = shared.server;
 
 function doPing(next) {
   return next(null, {message: 'pong'});

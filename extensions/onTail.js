@@ -1,6 +1,6 @@
 'use strict';
-var log = require('../logger');
-var requestSummarizer = require('./requestSummarizer');
+const log = require('../logger');
+const requestSummarizer = require('./requestSummarizer');
 
 function shouldLog(request) {
   if (request.route.path.indexOf('ping') > -1) {

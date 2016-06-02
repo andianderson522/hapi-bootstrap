@@ -1,6 +1,6 @@
 'use strict';
-var handlers = require('../handlers');
-var pingHandler = handlers.pingHandler;
+const handlers = require('../handlers');
+const pingHandler = handlers.pingHandler;
 
 module.exports = function attachPingRoutes(server) {
   server.route({

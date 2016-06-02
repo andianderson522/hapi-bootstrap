@@ -1,9 +1,9 @@
 'use strict';
-var winston = require('winston');
-var config = require('../config')();
+const winston = require('winston');
+const config = require('../config')();
 winston.emitErrs = true;
 
-var logger = new winston.Logger({
+const logger = new winston.Logger({
   transports: [
     new winston.transports.File({
       level: config.level,

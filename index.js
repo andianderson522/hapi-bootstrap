@@ -1,13 +1,12 @@
 'use strict';
 require('newrelic');
-var config = require('./config')();
-var log = require('./logger');
-var extensions = require('./extensions');
-var shared = require('./shared');
-var serv = shared.server;
-
-var Inert = require('inert');
-var Vision = require('vision');
+const config = require('./config')();
+const log = require('./logger');
+const extensions = require('./extensions');
+const shared = require('./shared');
+const serv = shared.server;
+const Inert = require('inert');
+const Vision = require('vision');
 
 serv.connection({ port: config.port });
 

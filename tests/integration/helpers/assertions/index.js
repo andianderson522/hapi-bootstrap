@@ -1,6 +1,6 @@
 'use strict';
-var chai = require('chai');
-var expect = chai.expect;
+const chai = require('chai');
+const expect = chai.expect;
 
 exports.basicSuperAgentRequestSuccess = function basicSuperAgentRequestSuccess(err, res, statusCode) {
   expect(err, 'should not have an err').to.not.exist;
@@ -22,7 +22,7 @@ exports.assertBadSuperAgentRequest = function assertBadSuperAgentRequest(err, re
   expect(err, 'expect err to exist').to.exist;
   expect(res, 'expect res to exist').to.exist;
   expect(res.status, 'status should equal: ' + statusCode).to.equal(statusCode);
-  var body = res.body;
+  const body = res.body;
   expect(body).to.not.be.empty;
   expect(body.statusCode).to.equal(statusCode);
   expect(body.error).to.not.be.empty;

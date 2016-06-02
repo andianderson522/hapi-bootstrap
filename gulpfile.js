@@ -1,14 +1,11 @@
 'use strict';
-var gulp = require('gulp');
-var todo = require('gulp-todo');
-var eslint = require('gulp-eslint');
-var livereload = require('gulp-livereload');
-/*eslint-disable*/
-// var bcrypt = require('bcrypt');
-/*eslint-enable*/
-var mocha = require('gulp-mocha');
+const gulp = require('gulp');
+const todo = require('gulp-todo');
+const eslint = require('gulp-eslint');
+const livereload = require('gulp-livereload');
+const mocha = require('gulp-mocha');
 
-var sourceDirs = ['./**/*.js', '!node_modules/**/*.js'];
+const sourceDirs = ['./**/*.js', '!node_modules/**/*.js'];
 
 gulp.task('lint', function performLint() {
   return gulp
@@ -49,7 +46,7 @@ gulp.task('todo', function performTODOs() {
 gulp.task('default', ['todo', 'lint', 'test']);
 
 gulp.task('watch', function performWatch() {
-  var watchFiles = sourceDirs.slice();
+  const watchFiles = sourceDirs.slice();
   watchFiles.push('tests/unit/**/*.js');
   livereload.listen();
   gulp.watch(watchFiles, function onChange() {

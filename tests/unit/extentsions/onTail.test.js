@@ -1,15 +1,13 @@
 'use strict';
-var chai = require('chai');
-var expect = chai.expect;
-var onTail = require('../../../extensions/onTail');
+const chai = require('chai');
+const should = chai.should();
+const onTail = require('../../../extensions/onTail');
 
 describe('onTail', function desc() {
-  it('exists', function it(done) {
-    expect(onTail).exists;
-    done();
+  it('exists', function it() {
+    should.exist(onTail);
   });
-  it('has an handleTail function', function it(done) {
-    expect(onTail.handleTail).is.a.function;
-    done();
+  it('has an handleTail function', function it() {
+    should.exist(onTail.handleTail);
   });
 });

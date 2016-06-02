@@ -1,12 +1,12 @@
 'use strict';
-var argv = require('minimist')(process.argv.slice(2));
-var fs = require('fs');
+const argv = require('minimist')(process.argv.slice(2));
+const fs = require('fs');
 
-var port = process.env.NODE_PORT || 8081;
+const port = process.env.NODE_PORT || 8081;
 
 function logDirExistsSync() {
   // FIXME needs to be changed to actual
-  var expectedLogDir = '/cn/runtime/YOURPROJECTNAMEHERE/nodejs/logs';
+  const expectedLogDir = '/cn/runtime/YOURPROJECTNAMEHERE/nodejs/logs';
   try {
     if (fs.statSync(expectedLogDir).isDirectory()) {
       return expectedLogDir;
@@ -19,7 +19,7 @@ function logDirExistsSync() {
   }
 }
 
-var config = {
+const config = {
   local: {
     mode: 'local',
     level: 'fatal',
@@ -41,7 +41,7 @@ var config = {
     port: port,
     logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'ci-cnid-user-service.conde.io',
+    basePath: '',
     schemes: ['http'],
     redis: {
       host: 'ci-redis-user-platform.conde.io',
@@ -56,7 +56,7 @@ var config = {
     port: port,
     logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'stag-cnid-user-service.conde.io',
+    basePath: '',
     schemes: ['https'],
     redis: {
       host: 'stag-redis-user-platform.conde.io',
@@ -71,7 +71,7 @@ var config = {
     port: port,
     logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'prod-cnid-user-service.conde.io',
+    basePath: '',
     schemes: ['https'],
     redis: {
       host: 'prod-redis-user-platform.conde.io',

@@ -1,10 +1,10 @@
 'use strict';
 const chai = require('chai');
 const should = chai.should();
-var config = require('./config')();
-var log = require('./logger');
-var superagent = require('superagent');
-var assertions = require('./helpers/assertions');
+const config = require('./config')();
+const log = require('./logger');
+const superagent = require('superagent');
+const assertions = require('./helpers/assertions');
 
 describe('health Routes work', function describeHealthRoutesSuite() {
   const basePath = config.baseURL;

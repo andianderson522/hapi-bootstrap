@@ -1,8 +1,8 @@
 'use strict';
-var config = require('../config')();
+const config = require('../config')();
 
 exports.summarize = function summarize(request) {
-  let summary = {
+  const summary = {
     id: request.id,
     url: request.raw.req.url.toString(),
     method: request.raw.req.method,

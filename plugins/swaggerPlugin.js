@@ -1,8 +1,8 @@
 'use strict';
-var pack = require('../package.json');
-var config = require('../config')();
+const pack = require('../package.json');
+const config = require('../config')();
 
-var swaggerOptions = {
+const swaggerOptions = {
   host: config.basePath,
   schemes: config.schemes,
   pathPrefixSize: 2,

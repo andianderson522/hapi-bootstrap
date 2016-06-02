@@ -1,13 +1,10 @@
 'use strict';
-var chai = require('chai');
-/*eslint-disable*/
-var should = chai.should();
-/*eslint-enable*/
-var routes = require('../../../routes');
+const chai = require('chai');
+const should = chai.should();
+const routes = require('../../../routes');
 
 describe('routes: ', function desc() {
-  it('exists', function it(done) {
-    routes.should.exist;
-    done();
+  it('exists', function it() {
+    should.exist(routes);
   });
 });

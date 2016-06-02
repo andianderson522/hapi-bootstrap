@@ -1,13 +1,10 @@
 'use strict';
-var chai = require('chai');
-/*eslint-disable*/
-var should = chai.should();
-/*eslint-enable*/
-var dataaccess = require('../../../dataaccess');
+const chai = require('chai');
+const should = chai.should();
+const dataaccess = require('../../../dataaccess');
 
 describe('dataaccess', function desc() {
-  it('exists', function it(done) {
-    dataaccess.should.exist;
-    done();
+  it('exists', function it() {
+    should.exist(dataaccess);
   });
 });

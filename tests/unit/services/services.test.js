@@ -1,7 +1,7 @@
 'use strict';
-var chai = require('chai');
-var should = chai.should();
-var services = require('../../../services');
+const chai = require('chai');
+const should = chai.should();
+const services = require('../../../services');
 
 describe('services test', function desc() {
   it('exists', function it() {

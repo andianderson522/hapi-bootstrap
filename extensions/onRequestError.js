@@ -1,7 +1,7 @@
 'use strict';
-var log = require('../logger');
-var requestSummarizer = require('./requestSummarizer');
-var newrelic = require('newrelic');
+const log = require('../logger');
+const requestSummarizer = require('./requestSummarizer');
+const newrelic = require('newrelic');
 
 function logError(request, error) {
   let summary = requestSummarizer.summarize(request);

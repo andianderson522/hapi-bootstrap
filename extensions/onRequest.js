@@ -1,7 +1,7 @@
 'use strict';
-var newrelic = require('newrelic');
-var log = require('../logger');
-var requestSummarizer = require('./requestSummarizer');
+const newrelic = require('newrelic');
+const log = require('../logger');
+const requestSummarizer = require('./requestSummarizer');
 
 function doNewRelic(request, xClient) {
   log.debug('sending data to new relic');

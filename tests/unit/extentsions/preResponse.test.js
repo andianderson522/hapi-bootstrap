@@ -1,10 +1,10 @@
-var chai = require('chai');
-var expect = chai.expect;
-var preResonseExtension = require('../../../extensions/preResponseExtension');
+'use strict';
+const chai = require('chai');
+const should = chai.should();
+const preResonseExtension = require('../../../extensions/preResponseExtension');
 
 describe('preResponse: ', function desc() {
-  it('exists', function it(done) {
-    expect(preResonseExtension).to.exist;
-    done();
+  it('exists', function it() {
+    should.exist(preResonseExtension);
   });
 });

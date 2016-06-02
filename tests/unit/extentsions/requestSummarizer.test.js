@@ -1,15 +1,13 @@
 'use strict';
-var chai = require('chai');
-var expect = chai.expect;
-var requestSummarizer = require('../../../extensions/requestSummarizer');
+const chai = require('chai');
+const should = chai.should();
+const requestSummarizer = require('../../../extensions/requestSummarizer');
 
 describe('requestSummarizer: ', function desc() {
-  it('exists', function it(done) {
-    expect(requestSummarizer).exits;
-    done();
+  it('exists', function it() {
+    should.exist(requestSummarizer);
   });
-  it('has a summerize function', function it(done) {
-    expect(requestSummarizer.summerize).is.a.function;
-    done();
+  it('has a summerize function', function it() {
+    should.exist(requestSummarizer.summarize);
   });
 });

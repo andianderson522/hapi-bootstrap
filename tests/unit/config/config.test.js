@@ -25,7 +25,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     expect(config.level).to.equal('info');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
-    expect(config.basePath).to.equal('ci-cnid-user-service.conde.io');
+    expect(config.basePath).to.equal('');
     const redis = config.redis;
     should.exist(redis);
     redis.host.should.equal('ci-redis-user-platform.conde.io');
@@ -39,7 +39,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     expect(config.level).to.equal('warn');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
-    expect(config.basePath).to.equal('stag-cnid-user-service.conde.io');
+    expect(config.basePath).to.equal('');
     const redis = config.redis;
     should.exist(redis);
     redis.host.should.equal('stag-redis-user-platform.conde.io');
@@ -53,7 +53,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     expect(config.level).to.equal('error');
     expect(config.port).to.equal(8081);
     assert.isDefined(config.logDir);
-    expect(config.basePath).to.equal('prod-cnid-user-service.conde.io');
+    expect(config.basePath).to.equal('');
     const redis = config.redis;
     should.exist(redis);
     redis.host.should.equal('prod-redis-user-platform.conde.io');

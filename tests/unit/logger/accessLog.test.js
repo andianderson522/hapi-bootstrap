@@ -1,32 +1,30 @@
 'use strict';
-var chai = require('chai');
-var expect = chai.expect;
-var sinon = require('sinon');
-var logger = require('../../../logger/accessLog');
-var stream = require('../../../logger/accessLog').stream;
+const chai = require('chai');
+const should = chai.should();
+const sinon = require('sinon');
+const logger = require('../../../logger/accessLog');
+const stream = require('../../../logger/accessLog').stream;
 
 describe('Access Logging setup', function describeAccessLoggingSuite() {
   after(function cleanupTtest() {
     logger.debug('complete');
   });
-  it('test logger setup', function testLoggerConfiguration(done) {
-    expect(logger).to.exist;
-    var transports = logger.transports;
-    expect(transports).to.exist;
-    var file = transports.file;
-    expect(file).to.exist;
-    expect(file.level).to.equal('info');
-    expect(file.filename).to.contain('app.log');
-    done();
+  it('test logger setup', function testLoggerConfiguration() {
+    should.exist(logger);
+    const transports = logger.transports;
+    should.exist(transports);
+    const file = transports.file;
+    should.exist(file);
+    file.level.should.equal('info');
+    file.filename.should.contain('app.log');
   });
 });
 describe('stream function', function streamSuite() {
-  it('test stream', function testStreamFunctionality(done) {
-    expect(stream).to.exist;
-    expect(stream.write).is.function;
+  it('test stream', function testStreamFunctionality() {
+    should.exist(stream);
+    should.exist(stream.write);
     sinon.spy(stream, 'write');
     stream.write('request');
-    expect(stream.write.calledOnce).is.true;
-    done();
+    stream.write.calledOnce.should.be.true;
   });
 });

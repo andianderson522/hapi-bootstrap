@@ -1,6 +1,6 @@
 'use strict';
-var Hapi = require('hapi');
-var config = require('./config')();
+const Hapi = require('hapi');
+const config = require('./config')();
 
 // warning these do not take account leaps
 const SECOND = 1000;
