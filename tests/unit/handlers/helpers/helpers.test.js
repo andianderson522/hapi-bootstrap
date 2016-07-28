@@ -1,7 +1,8 @@
 'use strict';
 const chai = require('chai');
 const should = chai.should();
-const helpers = require('../../../../handlers/helpers');
+const tools = require('@condenast/user-platform-utils');
+const helpers = tools.helpers;
 
 describe('handler/helpers', function desc() {
   it('exists', function it() {

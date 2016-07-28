@@ -10,7 +10,4 @@ describe('utils', function desc() {
   it('has a cacheUtils', function it() {
     should.exist(utils.cacheUtils);
   });
-  it('has an uuidUtils', function it() {
-    should.exist(utils.uuidUtils);
-  });
 });

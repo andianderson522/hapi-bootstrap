@@ -31,6 +31,7 @@
     "node": ">=4.0"
   },
   "dependencies": {
+    "@condenast/user-platform-utils": "^0.0.3",
     "boom": "^2.5.x",
     "catbox": "6.x.x",
     "catbox-redis": "^1.0.7",

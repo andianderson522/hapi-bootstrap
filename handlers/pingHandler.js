@@ -4,7 +4,8 @@ const serv = shared.server;
 const utils = require('../utils');
 const cacheUtils = utils.cacheUtils;
 const log = require('../logger');
-const helpers = require('./helpers');
+const tools = require('@condenast/user-platform-utils');
+const helpers = tools.helpers;
 const jsonAPIHelper = helpers.jsonAPIHelper;
 
 function doPing(next) {

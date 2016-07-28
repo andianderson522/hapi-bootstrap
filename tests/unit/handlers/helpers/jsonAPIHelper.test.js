@@ -1,7 +1,8 @@
 'use strict';
 const chai = require('chai');
 const should = chai.should();
-const helpers = require('../../../../handlers/helpers');
+const tools = require('@condenast/user-platform-utils');
+const helpers = tools.helpers;
 const jsonAPIHelper = helpers.jsonAPIHelper;
 
 describe('jsonAPIHelper', function desc() {
