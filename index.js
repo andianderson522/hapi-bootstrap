@@ -10,7 +10,7 @@ const Vision = require('vision');
 
 serv.connection({ port: config.port });
 
-// server.ext('onPreResponse', extensions.handlePreResponse);
+serv.ext('onPreResponse', extensions.handlePreResponse);
 
 serv.on('request-internal', extensions.handleOnRequest);
 

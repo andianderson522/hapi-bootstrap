@@ -32,6 +32,12 @@ const config = {
       host: 'ci-redis-user-platform.conde.io',
       port: 6379,
       cachePartition: 'localYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 4,
+      staleInMinutes: 2,
+      staleTimeoutMinutes: 1,
+      generateTimeout: 400
     }
   },
   ci: {
@@ -47,6 +53,12 @@ const config = {
       host: 'ci-redis-user-platform.conde.io',
       port: 6379,
       cachePartition: 'ciYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 8,
+      staleInMinutes: 4,
+      staleTimeoutMinutes: 2,
+      generateTimeout: 400
     }
   },
   staging: {
@@ -62,6 +74,12 @@ const config = {
       host: 'stag-redis-user-platform.conde.io',
       port: 6379,
       cachePartition: 'stagYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 16,
+      staleInMinutes: 8,
+      staleTimeoutMinutes: 4,
+      generateTimeout: 400
     }
   },
   production: {
@@ -77,6 +95,12 @@ const config = {
       host: 'prod-redis-user-platform.conde.io',
       port: 6379,
       cachePartition: 'prodYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 32,
+      staleInMinutes: 16,
+      staleTimeoutMinutes: 8,
+      generateTimeout: 400
     }
   }
 };
