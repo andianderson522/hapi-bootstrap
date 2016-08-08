@@ -1,29 +1,29 @@
+
 'use strict';
 const chai = require('chai');
-const should = chai.should();
+const expect = chai.expect;
 const sinon = require('sinon');
 const config = require('../../../config')();
 const logger = require('../../../logger');
 const stream = require('../../../logger').stream;
 
 describe('Logging setup', function describeLoggingSuite() {
-  it('test logger setup', function testLoggerConfiguration() {
-    should.exist(logger);
-    const transports = logger.transports;
-    should.exist(transports);
-    const file = transports.file;
-    should.exist(file);
-    file.level.should.equal(config.level);
-    transports.console.level.should.equal(config.consoleLogLevel);
-    file.filename.should.contain('app.log');
+  it('test logger setup', function testLoggerConfiguration(done) {
+    expect(logger).to.exist;
+    var transports = logger.transports;
+    expect(transports).to.exist;
+    expect(transports.console).to.exist;
+    expect(transports.console.level).to.equal(config.level);
+    done();
   });
 });
 describe('stream function', function describeStreamSuite() {
-  it('test stream', function testStreamFunctionality() {
-    should.exist(stream);
-    should.exist(stream.write);
+  it('test stream', function testStreamFunctionality(done) {
+    expect(stream).to.exist;
+    expect(stream.write).is.function;
     sinon.spy(stream, 'write');
     stream.write('hello');
-    stream.write.calledOnce.should.be.true;
+    expect(stream.write.calledOnce).is.true;
+    done();
   });
 });

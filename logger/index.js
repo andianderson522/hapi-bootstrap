@@ -1,24 +1,12 @@
 'use strict';
-const winston = require('winston');
-const config = require('../config')();
+var winston = require('winston');
+var config = require('../config')();
 winston.emitErrs = true;
 
-const logger = new winston.Logger({
+var logger = new winston.Logger({
   transports: [
-    new winston.transports.File({
-      level: config.level,
-      filename: config.logDir + '/app.log',
-      handleExceptions: true,
-      json: true,
-      maxsize: 10485760, // 5MB
-      maxFiles: 7,
-      colorize: false,
-      timestamp: true,
-      tailable: true,
-      zippedArchive: true
-    }),
     new winston.transports.Console({
-      level: config.consoleLogLevel,
+      level: config.level,
       handleExceptions: true,
       json: false,
       colorize: true,

@@ -8,7 +8,6 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.mode.should.equal('local');
     config.level.should.equal('fatal');
     config.port.should.equal(8081);
-    should.exist(config.logDir);
     config.basePath.should.equal('localhost:8081');
     const redis = config.redis;
     should.exist(redis);
@@ -28,7 +27,6 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.mode.should.equal('ci');
     config.level.should.equal('info');
     config.port.should.equal(8081);
-    should.exist(config.logDir);
     config.basePath.should.equal('');
     const redis = config.redis;
     should.exist(redis);
@@ -48,7 +46,6 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.mode.should.equal('stag');
     config.level.should.equal('warn');
     config.port.should.equal(8081);
-    should.exist(config.logDir);
     config.basePath.should.equal('');
     const redis = config.redis;
     should.exist(redis);
@@ -68,7 +65,6 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.mode.should.equal('prod');
     config.level.should.equal('error');
     config.port.should.equal(8081);
-    should.exist(config.logDir);
     config.basePath.should.equal('');
     const redis = config.redis;
     should.exist(redis);

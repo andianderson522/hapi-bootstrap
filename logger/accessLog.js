@@ -1,15 +1,15 @@
 'use strict';
-const winston = require('winston');
-const config = require('../config')();
+var winston = require('winston');
+var config = require('../config')();
 
-const logger = new winston.Logger({
+var logger = new winston.Logger({
   transports: [
-    new winston.transports.File({
+    new winston.transports.Console({
       level: config.level,
-      filename: config.logDir + '/app.log',
       handleExceptions: true,
-      json: true,
-      tailable: true
+      json: false,
+      colorize: true,
+      timestamp: true
     })
   ],
   exitOnError: false
