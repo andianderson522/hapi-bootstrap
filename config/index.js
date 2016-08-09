@@ -6,7 +6,7 @@ const port = process.env.NODE_PORT || 8081;
 const config = {
   local: {
     mode: 'local',
-    level: 'fatal',
+    level: 'debug',
     port: port,
     basePath: 'localhost:8081',
     schemes: ['http'],

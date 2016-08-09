@@ -6,7 +6,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
   it('should load local configurations', function testLocalConfiguration(done) {
     const config = require('../../../config')('local');
     config.mode.should.equal('local');
-    config.level.should.equal('fatal');
+    config.level.should.equal('debug');
     config.port.should.equal(8081);
     config.basePath.should.equal('localhost:8081');
     const redis = config.redis;
