@@ -1,19 +1,15 @@
 'use strict';
 const gulp = require('gulp');
 const todo = require('gulp-todo');
-const eslint = require('gulp-eslint');
+const shell = require('gulp-shell');
 const livereload = require('gulp-livereload');
 const mocha = require('gulp-mocha');
 
 const sourceDirs = ['./**/*.js', '!node_modules/**/*.js'];
 
-gulp.task('lint', function performLint() {
-  return gulp
-    .src(['./**/*.js', '!node_modules/**/*.js'])
-    .pipe(eslint({'configFile': '.eslintrc'}))
-    .pipe(eslint.format())
-    .pipe(eslint.failOnError());
-});
+gulp.task('lint', shell.task([
+  'npm run lint'
+]));
 
 gulp.task('test', ['todo', 'lint'], function performTests() {
   return gulp.src(['tests/unit/**/*.js'])

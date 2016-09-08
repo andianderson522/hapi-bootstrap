@@ -2,6 +2,7 @@
   "name": "@condenast/hapi-bootstrap",
   "version": "0.0.1",
   "scripts": {
+    "lint": "eslint .",
     "start": "$NODE_BIN cluster.js",
     "test": "gulp"
   },
@@ -51,14 +52,17 @@
   },
   "devDependencies": {
     "@condenast/cn-js-styleguide": "~0.0.1",
+    "@condenast/eslint-config-condenast": "^0.3.0",
     "babel-eslint": "~4.1.0",
     "chai": "~2.1.2",
     "chai-as-promised": "^5.1.0",
+    "eslint": "^3.4.0",
+    "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-react": "~3.3.0",
     "gulp": "^3.9.1",
-    "gulp-eslint": "~1.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-mocha": "~2.0.0",
+    "gulp-shell": "^0.5.2",
     "gulp-todo": "~3.1.1",
     "mocha": "~2.2.1",
     "sinon": "~1.15.4",
