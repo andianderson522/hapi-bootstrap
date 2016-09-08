@@ -33,13 +33,11 @@ module.exports.handlePreResponse = function handlePreResponse(request, reply) {
       meta: Hoek.applyToDefaults({id: request.id}, internals.meta)
     };
     response.output.headers['content-type'] = 'application/vnd.api+json';
-  } else {
-    if (isJsonApiRequest(request)) {
-      if (response.source) {
-        response.source.meta = Hoek.applyToDefaults({id: request.id}, internals.meta);
-      }
-      response.headers['content-type'] = 'application/vnd.api+json';
+  } else if (isJsonApiRequest(request)) {
+    if (response.source) {
+      response.source.meta = Hoek.applyToDefaults({id: request.id}, internals.meta);
     }
+    response.headers['content-type'] = 'application/vnd.api+json';
   }
   return reply.continue();
 };
