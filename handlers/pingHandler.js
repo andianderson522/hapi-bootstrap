@@ -26,5 +26,5 @@ module.exports.handlePing = function handlePing(request, reply) {
 
 module.exports.handleAlive = function handleAlive(request, reply) {
   jsonAPIHelper.validateAcceptHeader(request);
-  reply({'message': 'I think therfore I am.'});
+  reply({message: 'I think therfore I am.'});
 };

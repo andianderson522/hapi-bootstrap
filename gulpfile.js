@@ -13,13 +13,13 @@ gulp.task('lint', shell.task([
 
 gulp.task('test', ['todo', 'lint'], function performTests() {
   return gulp.src(['tests/unit/**/*.js'])
-    .pipe(mocha({'reporter': 'spec', 'timeout': 100}));
+    .pipe(mocha({reporter: 'spec', timeout: 100}));
 });
 
 // this is for codeship, they have an issue and hang if the process does not implicitly call process exit
 gulp.task('test2', ['lint'], function performTests() {
   return gulp.src(['tests/unit/**/*.js'])
-    .pipe(mocha({'reporter': 'spec', 'timeout': 200}))
+    .pipe(mocha({reporter: 'spec', timeout: 200}))
     .once('error', function e() {
       process.exit(1);
     })
@@ -30,7 +30,7 @@ gulp.task('test2', ['lint'], function performTests() {
 
 gulp.task('integrationTest', function performIntegrationTests() {
   return gulp.src(['tests/integration/**/*.js'])
-    .pipe(mocha({'reporter': 'spec', 'timeout': 1000}));
+    .pipe(mocha({reporter: 'spec', timeout: 1000}));
 });
 
 gulp.task('todo', function performTODOs() {
