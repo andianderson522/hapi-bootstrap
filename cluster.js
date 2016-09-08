@@ -6,6 +6,7 @@ const log = require('./logger');
 
 const workers = [];
 let restart = true;
+var child;
 
 function handleKillSignal(signal) {
   restart = false;
@@ -37,7 +38,7 @@ function handleStopSignal() {
 
 if (cluster.isMaster) {
   for (let i = 0; i < numCPUs; i++) {
-    var child = cluster.fork();
+    child = cluster.fork();
     child.on('exit', handleChildOnExit());
     workers.push(child);
   }
