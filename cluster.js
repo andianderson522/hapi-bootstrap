@@ -6,7 +6,7 @@ const log = require('./logger');
 
 const workers = [];
 let restart = true;
-var child;
+let child;
 
 function handleKillSignal(signal) {
   restart = false;
