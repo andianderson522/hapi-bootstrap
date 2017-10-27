@@ -1,22 +1,17 @@
 'use strict';
-const winston = require('winston');
 const config = require('../config')();
-winston.emitErrs = true;
+const bunyan = require('bunyan');
+const bformat = require('bunyan-format');
+const formatOut = bformat({ outputMode: 'bunyan', color: false, levelInString: true});
 
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.Console({
-      level: config.level,
-      handleExceptions: true,
-      json: false,
-      colorize: true,
-      timestamp: true
-    })
-  ],
-  exitOnError: false
+const logger = bunyan.createLogger({
+  name: 'hapi-bootstrap',
+  stream: formatOut,
+  level: config.logLevel
 });
 
 module.exports = logger;
+
 module.exports.stream = {
   write: function writeToStream(message) {
     logger.info(message);

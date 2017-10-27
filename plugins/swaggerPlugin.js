@@ -7,6 +7,8 @@ const swaggerOptions = {
   schemes: config.schemes,
   pathPrefixSize: 2,
   payloadType: 'json',
+  jsonPath: '/swagger.json',
+  documentationPath: '/documentation',
   info: {
     title: 'PUT YOUR API Documentation NAME HERE',
     version: pack.version + ' ' + config.mode

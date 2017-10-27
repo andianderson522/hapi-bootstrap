@@ -11,7 +11,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.basePath.should.equal('localhost:8081');
     const redis = config.redis;
     should.exist(redis);
-    redis.host.should.equal('ci-redis-user-platform.conde.io');
+    redis.host.should.equal('localhost');
     redis.port.should.equal(6379);
     redis.cachePartition.should.equal('localYOURSERVICENAMECache');
     const cache = config.cache;
@@ -30,7 +30,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.basePath.should.equal('');
     const redis = config.redis;
     should.exist(redis);
-    redis.host.should.equal('ci-redis-user-platform.conde.io');
+    redis.host.should.equal('YOUR_CI_REDIS_HOST');
     redis.port.should.equal(6379);
     redis.cachePartition.should.equal('ciYOURSERVICENAMECache');
     const cache = config.cache;
@@ -49,7 +49,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.basePath.should.equal('');
     const redis = config.redis;
     should.exist(redis);
-    redis.host.should.equal('stag-redis-user-platform.conde.io');
+    redis.host.should.equal('YOUR_STAG_REDIS_HOST');
     redis.port.should.equal(6379);
     redis.cachePartition.should.equal('stagYOURSERVICENAMECache');
     const cache = config.cache;
@@ -68,7 +68,7 @@ describe('Configuration setup', function describeConfigurationSuite() {
     config.basePath.should.equal('');
     const redis = config.redis;
     should.exist(redis);
-    redis.host.should.equal('prod-redis-user-platform.conde.io');
+    redis.host.should.equal('YOUR_PROD_REDIS_HOST');
     redis.port.should.equal(6379);
     redis.cachePartition.should.equal('prodYOURSERVICENAMECache');
     const cache = config.cache;

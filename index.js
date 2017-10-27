@@ -1,5 +1,4 @@
 'use strict';
-require('newrelic');
 const config = require('./config')();
 const log = require('./logger');
 const extensions = require('./extensions');
@@ -15,8 +14,6 @@ serv.ext('onPreResponse', extensions.handlePreResponse);
 serv.on('request-internal', extensions.handleOnRequest);
 
 serv.on('request-error', extensions.handleOnRequestError);
-
-serv.on('tail', extensions.handleTail);
 
 require('./routes')(serv);
 

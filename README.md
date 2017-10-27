@@ -5,16 +5,15 @@ just a shell project for my node.js hapi setups
 
 ##requirements
 * NVM
-* Node 4
+* Node 6
 
 ## to run unit tests
-`gulp`
+`npm test`
 
 ## to run integration tests
-`gulp integrationTest --env=local`
+`npm run fullTest`
 
 where env = the environment you want to run against (see config.js)
 
 ## to run the server
-
 `node index.js --env=local`

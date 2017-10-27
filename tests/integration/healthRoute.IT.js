@@ -12,6 +12,7 @@ describe('health Routes work', function describeHealthRoutesSuite() {
     'X-Client': 'integration'
   };
   it('/health works', function it(done) {
+    console.log('basePATH', basePath); // FIXME remove or make a log statement
     superagent.get(basePath + '/health')
       .send()
       .set(headers)

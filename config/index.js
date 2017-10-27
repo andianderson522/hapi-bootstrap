@@ -11,7 +11,7 @@ const config = {
     basePath: 'localhost:8081',
     schemes: ['http'],
     redis: {
-      host: 'ci-redis-user-platform.conde.io',
+      host: 'localhost',
       port: 6379,
       cachePartition: 'localYOURSERVICENAMECache'
     },
@@ -30,7 +30,7 @@ const config = {
     basePath: '',
     schemes: ['http'],
     redis: {
-      host: 'ci-redis-user-platform.conde.io',
+      host: 'YOUR_CI_REDIS_HOST',
       port: 6379,
       cachePartition: 'ciYOURSERVICENAMECache'
     },
@@ -49,7 +49,7 @@ const config = {
     basePath: '',
     schemes: ['https'],
     redis: {
-      host: 'stag-redis-user-platform.conde.io',
+      host: 'YOUR_STAG_REDIS_HOST',
       port: 6379,
       cachePartition: 'stagYOURSERVICENAMECache'
     },
@@ -68,7 +68,7 @@ const config = {
     basePath: '',
     schemes: ['https'],
     redis: {
-      host: 'prod-redis-user-platform.conde.io',
+      host: 'YOUR_PROD_REDIS_HOST',
       port: 6379,
       cachePartition: 'prodYOURSERVICENAMECache'
     },
@@ -82,5 +82,6 @@ const config = {
 };
 
 module.exports = function determineConfigMode(mode) {
-  return config[mode || argv.env || process.env.NODE_ENV || 'ci'] || config.ci;
+  const env = mode || argv.env || process.env.NODE_ENV || 'ci';
+  return config[env];
 };
