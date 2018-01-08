@@ -27,7 +27,11 @@ serv.register([
     log.error(JSON.stringify(err));
     throw err; // something bad happened loading the plugins
   }
-  serv.start(function serverStartedCallback() {
+  serv.start(function serverStartedCallback(err) {
+    if (err) {
+      log.error(JSON.stringify(err));
+      throw err; // something bad happened starting the server
+    }
     log.warn('running ' + config.mode + ' configuration');
     log.warn('Server running at: ' + serv.info.uri);
   });
