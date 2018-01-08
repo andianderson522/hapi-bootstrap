@@ -1,7 +1,7 @@
 'use strict';
-var argv = require('minimist')(process.argv.slice(2));
+const argv = require('minimist')(process.argv.slice(2));
 
-var config = {
+const config = {
   local: {
     mode: 'local',
     level: 'info',
@@ -10,7 +10,7 @@ var config = {
   ci: {
     mode: 'ci',
     level: 'info',
-    baseURL: 'http://ci-cnid-user-service.conde.io'
+    baseURL: 'http://'
   },
   staging: {
     mode: 'stag',

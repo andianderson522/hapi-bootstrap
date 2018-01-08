@@ -1,15 +1,13 @@
 'use strict';
-var chai = require('chai');
-var expect = chai.expect;
-var onRequestError = require('../../../extensions/onRequestError');
+const chai = require('chai');
+const should = chai.should();
+const onRequestError = require('../../../extensions/onRequestError');
 
 describe('onRequestError', function desc() {
-  it('exists', function it(done) {
-    expect(onRequestError).exists;
-    done();
+  it('exists', function it() {
+    should.exist(onRequestError);
   });
-  it('has a handleOnRequestError function', function it(done) {
-    expect(onRequestError.handleOnRequestError).is.a.function;
-    done();
+  it('has a handleOnRequestError function', function it() {
+    should.exist(onRequestError.handleOnRequestError);
   });
 });

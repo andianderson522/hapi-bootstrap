@@ -1,13 +1,16 @@
 {
-  "name": "hapi-bootstrap",
+  "name": "@condenast/hapi-bootstrap",
   "version": "0.0.1",
   "scripts": {
-    "start": "$NODE_BIN index.js",
-    "test": "gulp"
+    "lint": "./node_modules/.bin/eslint .",
+    "test": "npm run lint && npm run unit-test",
+    "int-test": "./node_modules/mocha/bin/mocha -b --timeout 400 --reporter spec --recursive tests/integration --env=local",
+    "unit-test": "./node_modules/mocha/bin/mocha -b --timeout 200 --reporter spec --recursive tests/unit/",
+    "fullTest": "npm run lint && npm run unit-test && npm run int-test"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:andianderson522/hapi-bootstrap.git"
+    "url": "git@github.com:CondeNast/hapi-bootstrap.git"
   },
   "license": "MIT",
   "eslintConfig": {
@@ -31,33 +34,25 @@
     "node": ">=4.0"
   },
   "dependencies": {
-    "catbox": "^7.1.0",
-    "catbox-redis": "^1.0.7",
-    "good": "^6.6.0",
-    "good-console": "^5.3.1",
-    "good-file": "^5.1.2",
-    "hapi": "^13.0.0",
-    "hapi-swagger": "^4.1.0",
-    "inert": "^3.2.0",
-    "lodash": "^4.0.0",
-    "minimist": "~1.1.2",
-    "newrelic": "~1.24.1",
-    "vision": "^4.0.1",
-    "winston": "^2.1.1"
+    "@condenast/user-platform-utils": "^1.1.4",
+    "bunyan": "^1.8.12",
+    "bunyan-format": "^0.2.1",
+    "catbox-redis": "^3.1.1",
+    "hapi": "~16.6.2",
+    "hapi-and-healthy": "^5.0.0",
+    "hapi-swagger": "^8.0.0",
+    "hoek": "^5.0.x",
+    "inert": "4.x.x",
+    "joi": "13.x.x",
+    "minimist": "~1.2.0",
+    "vision": "4.x.x"
   },
   "devDependencies": {
-    "@condenast/cn-js-styleguide": "~0.0.1",
-    "babel-eslint": "~4.1.0",
-    "chai": "~2.1.2",
-    "chai-as-promised": "^5.1.0",
-    "eslint-plugin-react": "~3.3.0",
-    "gulp": "^3.9.1",
-    "gulp-eslint": "~1.0.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-mocha": "~2.0.0",
-    "gulp-todo": "~3.1.1",
-    "mocha": "~2.2.1",
-    "sinon": "~1.15.4",
-    "superagent": "^1.7.2"
+    "@condenast/eslint-config-condenast": "^0.12.0",
+    "chai": "^4.1.2",
+    "eslint": "^3.3.1",
+    "mocha": "~4.0.1",
+    "sinon": "~4.0.2",
+    "superagent": "^3.8.0"
   }
 }

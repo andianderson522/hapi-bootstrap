@@ -1,14 +1,6 @@
 'use strict';
-var Hapi = require('hapi');
-var config = require('./config')();
-
-// warning these do not take account leaps
-const SECOND = 1000;
-const MINUTE = 60 * SECOND;
-const HOUR = 60 * MINUTE;
-const DAY = 24 * HOUR;
-const WEEK = 7 * DAY;
-const MONTH = 4 * WEEK;
+const Hapi = require('hapi');
+const config = require('./config')();
 
 module.exports = {
   server: new Hapi.Server({
@@ -19,16 +11,10 @@ module.exports = {
     },
     cache: [ {
       engine: require('catbox-redis'),
-      host: config.redisHost,
-      port: config.redisPort,
-      partition: config.cachePartion,
+      host: config.redis.host,
+      port: config.redis.port,
+      partition: config.redis.cachePartition,
       shared: true
     }]
-  }),
-  MONTH: MONTH,
-  SECOND: SECOND,
-  MINUTE: MINUTE,
-  HOUR: HOUR,
-  DAY: DAY,
-  WEEK: WEEK
+  })
 };

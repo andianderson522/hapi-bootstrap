@@ -1,35 +1,34 @@
 'use strict';
-var chai = require('chai');
-var expect = chai.expect;
+const chai = require('chai');
+const should = chai.should();
 
 exports.basicSuperAgentRequestSuccess = function basicSuperAgentRequestSuccess(err, res, statusCode) {
-  expect(err, 'should not have an err').to.not.exist;
-  expect(res.status, 'should have the expected status').to.eql(statusCode || 200);
-  expect(res.data).to.not.exist;
-  expect(res.text, 'response should have text').to.exist;
-  expect(res.body, 'should have a body').to.exist;
+  should.not.exist(err, 'should not have an err');
+  res.status.should.equal(statusCode || 200);
+  should.not.exist(res.data);
+  should.exist(res.text);
+  should.exist(res.body, 'should have a body');
 };
 
 exports.assertHeadRequestSuccess = function assertHeadRequestSuccess(err, res) {
-  expect(err, 'should not have an err object').to.not.exist;
-  expect(res.status, 'should have a statusCode of 200').to.eql(200);
-  expect(res.data).to.not.exist;
-  expect(res.text).to.not.exist;
-  expect(res.body, 'expect body to exist').to.exist;
+  should.not.exist(err, 'should not have an err object');
+  res.status.should.equal(200);
+  should.not.exist(res.data);
+  should.not.exist(res.text);
+  should.exist(res.body, 'expect body to exist');
 };
 
 exports.assertBadSuperAgentRequest = function assertBadSuperAgentRequest(err, res, statusCode) {
-  expect(err, 'expect err to exist').to.exist;
-  expect(res, 'expect res to exist').to.exist;
-  expect(res.status, 'status should equal: ' + statusCode).to.equal(statusCode);
-  var body = res.body;
-  expect(body).to.not.be.empty;
-  expect(body.statusCode).to.equal(statusCode);
-  expect(body.error).to.not.be.empty;
+  should.exist(err, 'expect err to exist');
+  should.exist(res, 'expect res to exist');
+  res.status.should.equal(statusCode);
+  const body = res.body;
+  should.exist(body);
+  should.exist(body.errors);
 };
 
 exports.assert404SuperAgentRequest = function assert404SuperAgentRequest(err, res) {
-  expect(err, 'should have an err object').to.exist;
-  expect(res, 'should have a res object').to.exist;
-  expect(res.status).to.equal(404);
+  should.exist(err, 'should have an err object');
+  should.exist(res, 'should have a res object');
+  res.status.should.equal(404);
 };

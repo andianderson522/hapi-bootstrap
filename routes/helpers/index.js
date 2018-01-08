@@ -1,5 +1,5 @@
 'use strict';
-var headerValidator = require('./headerValidator');
+const headerValidator = require('./headerValidator');
 
 module.exports = {
   headerValidator: headerValidator

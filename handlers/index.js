@@ -1,5 +1,5 @@
 'use strict';
-var pingHandler = require('./pingHandler');
+const pingHandler = require('./pingHandler');
 
 module.exports = {
   pingHandler: pingHandler

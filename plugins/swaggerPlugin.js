@@ -1,16 +1,20 @@
 'use strict';
-var pack = require('../package.json');
-var config = require('../config')();
+const pack = require('../package.json');
+const config = require('../config')();
 
-var swaggerOptions = {
+const swaggerOptions = {
   host: config.basePath,
   schemes: config.schemes,
   pathPrefixSize: 2,
   payloadType: 'json',
+  jsonPath: '/swagger.json',
+  documentationPath: '/documentation',
   info: {
     title: 'PUT YOUR API Documentation NAME HERE',
     version: pack.version + ' ' + config.mode
-  }
+  },
+  consumes: ['application/vnd.api+json', 'application/json'],
+  produces: ['application/vnd.api+json', 'application/json']
 };
 
 module.exports = {

@@ -1,78 +1,87 @@
 'use strict';
-var argv = require('minimist')(process.argv.slice(2));
-var fs = require('fs');
+const argv = require('minimist')(process.argv.slice(2));
 
-var port = process.env.NODE_PORT || 8081;
+const port = process.env.NODE_PORT || 8081;
 
-function logDirExistsSync() {
-  // FIXME needs to be changed to actual
-  var expectedLogDir = '/cn/runtime/YOURPROJECTNAMEHERE/nodejs/logs';
-  try {
-    if (fs.statSync(expectedLogDir).isDirectory()) {
-      return expectedLogDir;
-    }
-  } catch (err) {
-    /*eslint-disable*/
-    console.error('log directory does not exist falling back to internal dir');
-    /*eslint-enable*/
-    return './logs';
-  }
-}
-
-var config = {
+const config = {
   local: {
     mode: 'local',
     level: 'debug',
-    consoleLogLevel: 'debug',
     port: port,
-    logDir: './logs',
     basePath: 'localhost:8081',
     schemes: ['http'],
-    redisHost: '192.168.99.100',
-    redisPort: 6379,
-    cachePartion: 'localCache'
+    redis: {
+      host: 'localhost',
+      port: 6379,
+      cachePartition: 'localYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 4,
+      staleInMinutes: 2,
+      staleTimeoutMinutes: 1,
+      generateTimeout: 400
+    }
   },
   ci: {
     mode: 'ci',
-    level: 'debug',
-    consoleLogLevel: 'debug',
+    level: 'info',
     port: port,
-    logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'ci-cnid-user-service.conde.io',
+    basePath: '',
     schemes: ['http'],
-    redisHost: '192.168.99.100',
-    redisPort: 6379,
-    cachePartion: 'ciCache'
+    redis: {
+      host: 'YOUR_CI_REDIS_HOST',
+      port: 6379,
+      cachePartition: 'ciYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 8,
+      staleInMinutes: 4,
+      staleTimeoutMinutes: 2,
+      generateTimeout: 400
+    }
   },
   staging: {
     mode: 'stag',
-    level: 'info',
-    consoleLogLevel: 'error',
+    level: 'warn',
     port: port,
-    logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'stag-cnid-user-service.conde.io',
+    basePath: '',
     schemes: ['https'],
-    redisHost: '192.168.99.100',
-    redisPort: 6379,
-    cachePartion: 'stagCache'
+    redis: {
+      host: 'YOUR_STAG_REDIS_HOST',
+      port: 6379,
+      cachePartition: 'stagYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 16,
+      staleInMinutes: 8,
+      staleTimeoutMinutes: 4,
+      generateTimeout: 400
+    }
   },
   production: {
     mode: 'prod',
-    level: 'info',
-    consoleLogLevel: 'error',
+    level: 'error',
     port: port,
-    logDir: logDirExistsSync(),
     // FIXME change to actual
-    basePath: 'prod-cnid-user-service.conde.io',
+    basePath: '',
     schemes: ['https'],
-    redisHost: '192.168.99.100',
-    redisPort: 6379,
-    cachePartion: 'prodCache'
+    redis: {
+      host: 'YOUR_PROD_REDIS_HOST',
+      port: 6379,
+      cachePartition: 'prodYOURSERVICENAMECache'
+    },
+    cache: {
+      expiresInMinutes: 32,
+      staleInMinutes: 16,
+      staleTimeoutMinutes: 8,
+      generateTimeout: 400
+    }
   }
 };
 
 module.exports = function determineConfigMode(mode) {
-  return config[mode || argv.env || process.env.NODE_ENV || 'ci'] || config.ci;
+  const env = mode || argv.env || process.env.NODE_ENV || 'ci';
+  return config[env];
 };

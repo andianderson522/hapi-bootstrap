@@ -1,15 +1,9 @@
 'use strict';
-var log = require('../logger');
-var requestSummarizer = require('./requestSummarizer');
+const log = require('../logger');
 
-function logError(request, error) {
-  let summary = requestSummarizer.summarize(request);
-  summary.error = {
-    message: error.message,
-    stack: error.stack
-  };
-  summary.type = 'error';
-  log.error(summary);
+function logError(request, err) {
+  err.route = request.url.path;
+  log.error({route: request.url.path, err: err, stack: err.stack});
 }
 
 exports.handleOnRequestError = function handleOnRequestError(request, err) {

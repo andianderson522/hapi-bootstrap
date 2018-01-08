@@ -1,39 +1,34 @@
 'use strict';
-var chai = require('chai');
-/*eslint-disable*/
-var should = chai.should();
-/*eslint-enable*/
-var sinon = require('sinon');
-var pingHandler = require('../../../handlers/pingHandler');
+const chai = require('chai');
+const should = chai.should();
+const sinon = require('sinon');
+const pingHandler = require('../../../handlers/pingHandler');
 
 describe('ping handler', function desc() {
   let reply;
+  const request = {
+    headers: {
+      accept: 'application/vnd.api+json'
+    }
+  };
   beforeEach(function bef() {
     reply = sinon.spy();
   });
-  it('exits', function it(done) {
-    pingHandler.should.exits;
-    done();
+  it('exits', function it() {
+    should.exist(pingHandler);
   });
-  it('has a handle ping', function it(done) {
-    pingHandler.handlePing.should.exist;
-    done();
+  it('has a handle ping', function it() {
+    should.exist(pingHandler.handlePing);
   });
-  it('handlePing', function it(done) {
-    pingHandler.handlePing({}, reply);
-    // cache causes the following to fail
-    // reply.called.should.be.true;
-    // reply.callCount.should.be.equal(1);
-    done();
+  it('handlePing', function it() {
+    pingHandler.handlePing(request, reply);
   });
-  it('has a handle alive', function it(done) {
-    pingHandler.handleAlive.should.exist;
-    done();
+  it('has a handle alive', function it() {
+    should.exist(pingHandler.handleAlive);
   });
-  it('handlePing', function it(done) {
-    pingHandler.handleAlive({}, reply);
+  it('handlePing', function it() {
+    pingHandler.handleAlive(request, reply);
     reply.called.should.be.true;
     reply.callCount.should.be.equal(1);
-    done();
   });
 });
